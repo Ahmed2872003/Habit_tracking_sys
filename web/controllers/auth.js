@@ -31,12 +31,7 @@ class AuthController {
             user.validateUsername();
             user.validatePassword();
             const token = yield this.authService.authenticateUser(user);
-            res.cookie("jwt", "Bearer " + token, {
-                expires: new Date(Date.now() + AuthController.cookie_expiry),
-                httpOnly: true,
-                sameSite: "none",
-            });
-            res.sendStatus(http_status_codes_1.StatusCodes.OK);
+            res.json({ token });
         });
         this.logout = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             res.clearCookie("jwt", { path: "/" });

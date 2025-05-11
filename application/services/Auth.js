@@ -34,5 +34,5 @@ class AuthService {
         });
     }
 }
-AuthService.jwt_expiry = 30 * 60; // 30 minutes
+AuthService.jwt_expiry = 1 * 60 * 60; // 1 hour
 exports.default = AuthService;

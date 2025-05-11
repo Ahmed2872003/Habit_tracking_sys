@@ -17,7 +17,7 @@ const http_status_codes_1 = require("http-status-codes");
 const APIError_1 = __importDefault(require("../errors/APIError"));
 function authMiddeware(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { jwt: token } = req.cookies;
+        const token = req.headers["authorization"];
         if (!token || !token.startsWith("Bearer "))
             throw new APIError_1.default("Token error: No token provided", http_status_codes_1.StatusCodes.UNAUTHORIZED);
         try {

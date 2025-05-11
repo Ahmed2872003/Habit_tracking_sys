@@ -33,13 +33,13 @@ const authRouter = new Auth_1.default().router;
 const habitRouter = new Habit_1.default().router;
 const challengeRouter = new Challenge_1.default().router;
 // // Routes
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: false }));
+app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
     origin: process.env.CLIENT_URL,
     credentials: true,
 }));
-app.use(express_1.default.json());
-app.use(express_1.default.urlencoded({ extended: false }));
-app.use((0, cookie_parser_1.default)());
 app.use("/api/v1/auth", authRouter);
 app.use(auth_1.default);
 app.use("/api/v1/habit", habitRouter);
